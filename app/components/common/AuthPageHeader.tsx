@@ -1,0 +1,47 @@
+interface AuthPageHeaderProps {
+  backgroundColor?: string;
+  title: string;
+  subtext?: string;
+  className?: string;
+}
+
+const AuthPageHeader = ({
+  backgroundColor,
+  title,
+  subtext,
+  className,
+}: AuthPageHeaderProps) => {
+  const titleLines = Array.isArray(title) ? title : [title];
+
+  return (
+    <div
+      className={
+        "bg-dark-blue relative pt-15 md:pt-30 pb-55 px-4 sm:px-8 md:px-16 lg:px-[135px] flex flex-col gap-6 items-center justify-center"
+      }
+    >
+      <div className="flex flex-col gap-[34px] items-center justify-start shrink-0 w-full max-w-5xl relative z-10">
+        <div className="flex flex-col gap-2 md:gap-4 items-center justify-start self-stretch shrink-0 relative">
+          {/* Main Title */}
+          <h1
+            className="heading-1 text-white text-center font-serif font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight relative self-stretch"
+          >
+            {titleLines.map((line, index) => (
+              <span key={index}>{line}</span>
+            ))}
+          </h1>
+
+          {/* Subtext */}
+          {subtext && (
+            <p
+              className="subhead text-[var(--lighter-blue-color)] text-center font-serif text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed relative"
+            >
+              {subtext}
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AuthPageHeader;
